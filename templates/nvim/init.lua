@@ -49,7 +49,7 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 
 vim.keymap.set('n', '--', ':Explore<Enter>')
-vim.keymap.set('n', '-v', ':VExplore<Enter>')
+vim.keymap.set('n', '-v', ':Vexplore<Enter>')
 
 
 
