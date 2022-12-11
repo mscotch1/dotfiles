@@ -1,4 +1,5 @@
-title = "Linux Theming"
-
 [colors]
 primary-accent = "#06a258"
+
+[misc]
+background-opacity = '0.8'
