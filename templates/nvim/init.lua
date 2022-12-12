@@ -20,6 +20,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'styled-components/vim-styled-components'
 Plug 'tpope/vim-fugitive'
+Plug 'williamboman/mason.nvim'
 
 vim.call('plug#end')
 
@@ -113,6 +114,8 @@ require('lspconfig')['cssls'].setup {on_attach = on_attach}
 -- https://github.com/vscode-langservers/vscode-html-languageserver-bin
 require('lspconfig')['html'].setup {on_attach = on_attach}
 
+require('lspconfig')['eslint'].setup{}
+
 vim.o.completeopt = "menuone,noselect"
 require'compe'.setup({
   enabled = true,
@@ -123,3 +126,5 @@ require'compe'.setup({
     nvim_lsp = true,
   },
 })
+
+require'mason'.setup{}
