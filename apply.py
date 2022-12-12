@@ -2,11 +2,11 @@
 
 import toml
 from jinja2 import Environment, FileSystemLoader
-from os import path, mkdir
+from os import path, makedirs
 
 def create_if_not_exists(dir_path):
     if not path.isdir(dir_path):
-        mkdir(dir_path)
+        makedirs(dir_path, exist_ok = True)
 
 DIRECTORY = 'build'
 

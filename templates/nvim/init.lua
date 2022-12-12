@@ -1,20 +1,4 @@
--- OPTIONS
-vim.o.autoindent = true     -- indent a new line the same amount as the line just typed
-vim.o.compatible = false    -- disable compatibility to old-time vi
-vim.o.cursorline = true     -- highlight current cursorline
-vim.o.expandtab = true      -- converts tabs to white space
-vim.o.hlsearch = true       -- highlight search 
-vim.o.ignorecase = true     -- case insensitive 
-vim.o.incsearch = true      -- incremental search
-vim.o.mouse = a             -- enable mouse click
-vim.o.number = true         -- add line numbers
-vim.o.relativenumber = true -- relative line numbers
-vim.o.shiftwidth = 4        -- width for autoindents
-vim.o.showmatch = true      -- show matching 
-vim.o.softtabstop = 4       -- see multiple spaces as tabstops so <BS> does the right thing
-vim.o.swapfile = false      -- disable creating swap file
-vim.o.syntax = true         -- syntax highlighting
-vim.o.tabstop = 4           -- number of columns occupied by a tab 
+require('options')
 
 -- PLUGINS
 local Plug = vim.fn['plug#']
@@ -45,13 +29,21 @@ vim.cmd('colorscheme carbonfox')
 -- MAPPINGS
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-P>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ft', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 
 vim.keymap.set('n', '--', ':Explore<Enter>')
 vim.keymap.set('n', '-v', ':Vexplore<Enter>')
+vim.keymap.set('n', '-s', ':Sexplore<Enter>')
+vim.keymap.set('n', '-t', ':Texplore<Enter>')
 
-
+if vim.loop.os_uname().sysname == 'Linux'
+then
+    vim.keymap.set('n', '<leader>rc', ':e ~/.config/nvim/<Enter>')
+else
+    vim.keymap.set('n', '<leader>rc', ':e $LOCALAPPDATA/nvim/<Enter>')
+end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -131,5 +123,3 @@ require'compe'.setup({
     nvim_lsp = true,
   },
 })
-
-
