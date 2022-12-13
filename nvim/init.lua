@@ -6,7 +6,6 @@ vim.call('plug#begin')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'EdenEast/nightfox.nvim'
-Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/nvim-compe'
 Plug 'leafgarland/typescript-vim'
 Plug 'neovim/nvim-lspconfig'
@@ -14,11 +13,8 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'pangloss/vim-javascript'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'preservim/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
-Plug 'styled-components/vim-styled-components'
 Plug 'tpope/vim-fugitive'
 Plug 'williamboman/mason.nvim'
 
@@ -47,10 +43,12 @@ then
     vim.keymap.set('n', '<leader>rc', ':e ~/.config/nvim/<Enter>')
 else
     vim.keymap.set('n', '<leader>rc', ':e $LOCALAPPDATA/nvim/<Enter>')
-    vim.o.shell = 'pwsh.exe';
-    vim.o.shellcmdflag='-c'
-    vim.o.shellquote='"'
-    vim.o.shellxquote=''
+    vim.o.shell = 'pwsh'
+    vim.o.shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+    vim.o.shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.o.shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+    vim.o.shellquote = ''
+    vim.o.shellxquote= ''
 end
 
 -- Use an on_attach function to only map the following keys
@@ -135,3 +133,5 @@ require'compe'.setup({
 })
 
 require'mason'.setup{}
+
+require'nvim-treesitter.configs'.setup{}
