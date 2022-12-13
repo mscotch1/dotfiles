@@ -1,2 +1,3 @@
 @echo off
-mklink /D %LOCALAPPDATA%\nvim %CD%\build\nvim
+del %LOCALAPPDATA%\nvim
+mklink /D %LOCALAPPDATA%\nvim %CD%\nvim

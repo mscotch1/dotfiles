@@ -39,11 +39,18 @@ vim.keymap.set('n', '-v', ':Vexplore<Enter>')
 vim.keymap.set('n', '-s', ':Sexplore<Enter>')
 vim.keymap.set('n', '-t', ':Texplore<Enter>')
 
+vim.keymap.set('n', '<leader>sh', ':terminal<Enter>:set nonumber<Enter>:set norelativenumber<Enter>')
+
+-- OS-SPECIFIC
 if vim.loop.os_uname().sysname == 'Linux'
 then
     vim.keymap.set('n', '<leader>rc', ':e ~/.config/nvim/<Enter>')
 else
     vim.keymap.set('n', '<leader>rc', ':e $LOCALAPPDATA/nvim/<Enter>')
+    vim.o.shell = 'pwsh.exe';
+    vim.o.shellcmdflag='-c'
+    vim.o.shellquote='"'
+    vim.o.shellxquote=''
 end
 
 -- Use an on_attach function to only map the following keys
