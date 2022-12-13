@@ -1,5 +1,6 @@
 #/usr/bin/sh
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-ln -s build/nvim ~/.config/nvim
-ln -s build/kitty ~/.config/kitty
-ln -s build/tmux ~/.config/tmux
+ln -sf $DOTFILES/nvim/ $HOME/.config/nvim
+ln -sf $DOTFILES/kitty/ ~/.config/kitty
+ln -sf $DOTFILES/tmux/ ~/.config/tmux
