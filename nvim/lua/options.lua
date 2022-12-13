@@ -14,3 +14,4 @@ vim.o.softtabstop = 4       -- see multiple spaces as tabstops so <BS> does the 
 vim.o.swapfile = false      -- disable creating swap file
 vim.o.syntax = true         -- syntax highlighting
 vim.o.tabstop = 4           -- number of columns occupied by a tab 
+vim.o.termguicolors = true
