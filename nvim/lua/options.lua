@@ -15,3 +15,10 @@ vim.o.swapfile = false      -- disable creating swap file
 vim.o.syntax = true         -- syntax highlighting
 vim.o.tabstop = 4           -- number of columns occupied by a tab 
 vim.o.termguicolors = true
+
+vim.o.background = 'dark'
+vim.g.everforest_background = 'soft'
+vim.g.everforest_better_performance = true
+vim.cmd('colorscheme everforest')
+
+vim.g.mapleader = ' '
