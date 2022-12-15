@@ -54,12 +54,6 @@ require('lspconfig')['jsonls'].setup {
     cmd = {"json-languageserver", "--stdio"}
 }
 
--- https://github.com/redhat-developer/yaml-language-server
-require('lspconfig')['yamlls'].setup {on_attach = on_attach}
-
--- https://github.com/joe-re/sql-language-server
-require('lspconfig')['sqlls'].setup {on_attach = on_attach}
-
 -- https://github.com/vscode-langservers/vscode-css-languageserver-bin
 require('lspconfig')['cssls'].setup {on_attach = on_attach}
 
@@ -67,3 +61,7 @@ require('lspconfig')['cssls'].setup {on_attach = on_attach}
 require('lspconfig')['html'].setup {on_attach = on_attach}
 
 require('lspconfig')['eslint'].setup{on_attach = on_attach}
+
+require('lspconfig')['vimls'].setup{on_attach = on_attach}
+
+require('lspconfig')['yamlls'].setup{on_attach = on_attach}

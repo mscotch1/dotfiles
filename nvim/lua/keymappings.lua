@@ -3,9 +3,28 @@ vim.keymap.set('n', '-v', ':Vexplore<Enter>', { silent = true })
 vim.keymap.set('n', '-s', ':Sexplore<Enter>', { silent = true })
 vim.keymap.set('n', '-t', ':Texplore<Enter>', { silent = true })
 
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { silent = true })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { silent = true })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { silent = true })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { silent = true })
-
 vim.keymap.set('n', '<leader>sh', ':terminal<Enter>:set nonumber<Enter>:set norelativenumber<Enter>', { silent = true })
+
+set_tab_width = function (str)
+    if str == nil
+    then
+        return
+    end
+    value = tonumber(str)
+    if value == nil
+    then
+        print(string.format('Invalid argument ["%s"]', str))
+        return
+    end
+    vim.o.tabstop = math.floor(value)
+    vim.o.shiftwidth = math.floor(value)
+end
+
+vim.keymap.set('n', '<leader>tw',
+    function()
+        vim.ui.input(
+            { prompt = 'Enter new tab width: ' },
+            set_tab_width
+        )
+    end
+)
