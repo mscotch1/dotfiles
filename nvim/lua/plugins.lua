@@ -14,6 +14,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'folke/zen-mode.nvim'
 
 vim.call('plug#end')
 
@@ -29,3 +30,4 @@ require('plugins.telescope')
 require('plugins.vim-devicons')
 require('plugins.vim-fugitive')
 require('plugins.vim-gitgutter')
+require('plugins.zen-mode')

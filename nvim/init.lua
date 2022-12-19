@@ -1,6 +1,7 @@
 require('options')
 require('plugins')
 require('keymappings')
+require('functions')
 
 if vim.loop.os_uname().sysname == 'Linux'
 then
