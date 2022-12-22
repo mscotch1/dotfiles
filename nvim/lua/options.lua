@@ -12,6 +12,7 @@ vim.o.scrolloff = 8
 vim.o.shiftwidth = 4
 vim.o.showmatch = true
 vim.o.sidescrolloff = 8
+vim.o.signcolumn = 'auto:2'
 vim.o.smartindent = true
 vim.o.softtabstop = 4
 vim.o.swapfile = false
