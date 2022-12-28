@@ -9,3 +9,6 @@ vim.api.nvim_set_hl(0, "TabLine", { bg = "none" })
 vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "none" })
 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+
+vim.api.nvim_set_hl(0, "CursorLine", { bg = '#575757' })
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = '#575757' })

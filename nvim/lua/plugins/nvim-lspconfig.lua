@@ -22,6 +22,14 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float)
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+  vim.keymap.set('n', '<leader>df', vim.diagnostic.setqflist)
+  vim.diagnostic.config({
+    virtual_text = true,
+    severity_sort = true
+  })
 end
 
 local lsp_flags = {
@@ -65,3 +73,8 @@ require('lspconfig')['eslint'].setup{on_attach = on_attach}
 require('lspconfig')['vimls'].setup{on_attach = on_attach}
 
 require('lspconfig')['yamlls'].setup{on_attach = on_attach}
+
+vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
