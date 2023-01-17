@@ -22,3 +22,4 @@ vim.o.termguicolors = true
 vim.o.wrap = false
 
 vim.g.mapleader = ' '
+vim.g.netrw_banner = 0
