@@ -1,14 +1,14 @@
 return {
     {
-        'lewis6991/gitsigns.nvim',
-        init = function()
-            require('plugin-config.gitsigns')
-        end
-    },
-    {
         'sainnhe/everforest',
         init = function()
             require('plugin-config.everforest')
+        end
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        init = function()
+            require('plugin-config.gitsigns')
         end
     },
     {
@@ -57,6 +57,12 @@ return {
         'nvim-telescope/telescope.nvim',
         init = function()
             require('plugin-config.telescope')
+        end
+    },
+    {
+        'folke/tokyonight.nvim',
+        init = function()
+            require('plugin-config.tokyonight')
         end
     },
     {

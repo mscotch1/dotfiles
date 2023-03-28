@@ -10,6 +10,15 @@
         {
             "command": 
             {
+                "action": "splitPane",
+                "split": "auto",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+d"
+        },
+        {
+            "command": 
+            {
                 "action": "copy",
                 "singleLine": false
             },
@@ -21,15 +30,6 @@
         {
             "command": "find",
             "keys": "ctrl+shift+f"
-        },
-        {
-            "command": 
-            {
-                "action": "splitPane",
-                "split": "auto",
-                "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+d"
         }
     ],
     "alwaysShowTabs": false,
@@ -41,15 +41,15 @@
     {
         "defaults": 
         {
-            "colorScheme": "everforest",
-            "cursorShape": "filledBox",
+            "colorScheme": "Tokyo Night Storm",
+            "cursorShape": "vintage",
             "experimental.retroTerminalEffect": false,
             "font": 
             {
-                "face": "CaskaydiaCove NF",
-                "size": 11
+                "face": "FiraCode Nerd Font Mono Retina",
+                "size": 11.0
             },
-            "opacity": 80,
+            "opacity": 100,
             "padding": "0"
         },
         "list": 
@@ -275,6 +275,29 @@
             "yellow": "#C4A000"
         },
         {
+            "background": "#24283B",
+            "black": "#414868",
+            "blue": "#7AA2F7",
+            "brightBlack": "#414868",
+            "brightBlue": "#7AA2F7",
+            "brightCyan": "#7DCFFF",
+            "brightGreen": "#73DACA",
+            "brightPurple": "#BB9AF7",
+            "brightRed": "#F7768E",
+            "brightWhite": "#C0CAF5",
+            "brightYellow": "#E0AF68",
+            "cursorColor": "#C0CAF5",
+            "cyan": "#7DCFFF",
+            "foreground": "#A9B1DC",
+            "green": "#73DACA",
+            "name": "Tokyo Night Storm",
+            "purple": "#BB9AF7",
+            "red": "#F7768E",
+            "selectionBackground": "#28344A",
+            "white": "#C0CAF5",
+            "yellow": "#E0AF68"
+        },
+        {
             "background": "#000000",
             "black": "#000000",
             "blue": "#000080",
@@ -298,7 +321,7 @@
             "yellow": "#808000"
         },
         {
-            "background": "#252B30",
+            "background": "#1E1C24",
             "black": "#374247",
             "blue": "#7FBBB3",
             "brightBlack": "#6B7F87",
@@ -322,5 +345,6 @@
         }
     ],
     "showTabsInTitlebar": false,
+    "themes": [],
     "useAcrylicInTabRow": false
 }

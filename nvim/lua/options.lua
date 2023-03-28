@@ -2,6 +2,7 @@ vim.o.autoindent = true
 vim.o.compatible = false
 vim.o.cursorline = true
 vim.o.expandtab = true
+vim.o.guicursor = 'a:blinkon100'
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
