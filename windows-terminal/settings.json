@@ -4,10 +4,6 @@
     "actions": 
     [
         {
-            "command": "unbound",
-            "keys": "ctrl+v"
-        },
-        {
             "command": 
             {
                 "action": "splitPane",
@@ -15,6 +11,10 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+v"
         },
         {
             "command": 
@@ -49,7 +49,7 @@
                 "face": "FiraCode Nerd Font Mono Retina",
                 "size": 11.0
             },
-            "opacity": 100,
+            "opacity": 95,
             "padding": "0"
         },
         "list": 
@@ -85,6 +85,12 @@
                 "icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
                 "name": "Developer PowerShell for VS 2022",
                 "startingDirectory": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
             }
         ]
     },
