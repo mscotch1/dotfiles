@@ -27,3 +27,6 @@ then
 else
     require('os.windows')
 end
+
+vim.cmd('colorscheme catppuccin-frappe')
+set_transparent()

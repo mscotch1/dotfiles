@@ -15,9 +15,23 @@ return {
   },
   window_background_opacity = 0.95,
   text_background_opacity = 1.0,
-  color_scheme = 'EverforestDark (Gogh)',
-  font = wezterm.font({
-    family = 'Monofur Nerd Font Mono'
-  }),
-  font_size = 12.0
+  --color_scheme = 'EverforestDark (Gogh)',
+  color_scheme = 'Catppuccin Frappe',
+  font = wezterm.font(
+    { family = 'FiraCode Nerd Font Mono' }
+  ),
+  font_size = 11.0,
+  keys = {
+    -- fix tab switching in VIM
+    {
+      key = 'PageUp',
+      mods = 'CTRL',
+      action = wezterm.action.DisableDefaultAssignment
+    },
+    {
+      key = 'PageDown',
+      mods = 'CTRL',
+      action = wezterm.action.DisableDefaultAssignment
+    }
+  }
 }

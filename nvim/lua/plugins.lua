@@ -1,5 +1,8 @@
 return {
     {
+      'catppuccin/nvim', name='catppuccin'
+    },
+    {
         'sainnhe/everforest',
         init = function()
             require('plugin-config.everforest')
@@ -45,6 +48,11 @@ return {
         'nvim-treesitter/nvim-treesitter',
         init = function()
             require('plugin-config.nvim-treesitter')
+        end
+    },
+    {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        init = function()
         end
     },
     {
