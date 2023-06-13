@@ -37,10 +37,24 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-require('lspconfig')['pyright'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
+--require('lspconfig')['pylsp'].setup{
+    --on_attach = on_attach,
+    --cmd = {"python", "-m", "pylsp"},
+    --flags = lsp_flags,
+    --settings = {
+        --pylsp = {
+            --plugins = {
+                --pylint = { enabled = true },
+                --yapf = { enabled = true },
+                --pycodestyle = { enabled = true },
+                --flake8 = { enabled = true },
+            --},
+        --},
+    --},
+--}
+
+require('lspconfig')['pyright'].setup {on_attach = on_attach}
+
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
@@ -63,7 +77,7 @@ require('lspconfig')['jsonls'].setup {
 }
 
 -- https://github.com/vscode-langservers/vscode-css-languageserver-bin
-require('lspconfig')['cssls'].setup {on_attach = on_attach}
+require('lspconfig')['cssls'].setup { on_attach = on_attach }
 
 -- https://github.com/vscode-langservers/vscode-html-languageserver-bin
 require('lspconfig')['html'].setup {on_attach = on_attach}
@@ -73,6 +87,11 @@ require('lspconfig')['eslint'].setup{on_attach = on_attach}
 require('lspconfig')['vimls'].setup{on_attach = on_attach}
 
 require('lspconfig')['yamlls'].setup{on_attach = on_attach}
+
+require('lspconfig')['cmake'].setup{
+  on_attach = on_attach,
+  cmd = { 'C:/Users/Michael/AppData/Local/nvim-data/mason/bin/cmake-language-server.cmd' },
+}
 
 vim.fn.sign_define('DiagnosticSignError', { text = ' ', texthl = 'DiagnosticSignError' })
 vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSignWarn' })

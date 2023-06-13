@@ -10,6 +10,7 @@ vim.o.mouse = 'a'
 vim.o.number = true
 vim.o.relativenumber = true
 vim.o.scrolloff = 8
+vim.o.shadafile = 'NONE'
 vim.o.shiftwidth = 4
 vim.o.showmatch = true
 vim.o.sidescrolloff = 8
