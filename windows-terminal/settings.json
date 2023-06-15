@@ -52,8 +52,9 @@
             "experimental.retroTerminalEffect": false,
             "font": 
             {
-                "face": "FiraCode Nerd Font Mono",
-                "size": 11.0
+                "face": "CaskaydiaCove NFM",
+                "size": 11.0,
+                "weight": "normal"
             },
             "opacity": 95,
             "padding": "0"
