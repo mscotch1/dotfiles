@@ -28,5 +28,5 @@ else
     require('os.windows')
 end
 
-vim.cmd('colorscheme tokyonight-moon')
+vim.cmd('colorscheme catppuccin-latte')
 --set_transparent()
