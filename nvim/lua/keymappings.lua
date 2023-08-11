@@ -3,7 +3,8 @@ vim.keymap.set('n', '-v', ':Vexplore<Enter>', { silent = true })
 vim.keymap.set('n', '-s', ':Sexplore<Enter>', { silent = true })
 vim.keymap.set('n', '-t', ':Texplore<Enter>', { silent = true })
 
-vim.keymap.set('n', '<leader>sh', ':terminal<Enter>:set nonumber<Enter>:set norelativenumber<Enter>', { silent = true })
+vim.keymap.set('n', '<leader><leader>', ':vsplit<Enter>:terminal<Enter>:set nonumber<Enter>:set norelativenumber<Enter>a', { silent = true })
+vim.keymap.set('t', '<Esc><leader>', '<C-\\><C-n>', { silent = true })
 
 vim.keymap.set({'n', 'v'}, '<leader>y', '"+y')
 vim.keymap.set({'n', 'v'}, '<leader>p', '"+p')
@@ -18,3 +19,4 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set('n', '<C-Up>', ':cprev<Enter>')
 vim.keymap.set('n', '<C-Down>', ':cnext<Enter>')
+
