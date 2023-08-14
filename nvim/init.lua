@@ -29,4 +29,4 @@ else
 end
 
 vim.cmd('colorscheme catppuccin-macchiato')
---set_transparent()
+set_transparent()

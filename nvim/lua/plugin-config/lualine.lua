@@ -2,17 +2,15 @@ require('lualine').setup {
     options = {
         icons_enabled = true,
         theme = 'auto',
-        --component_separators = { left = '', right = ''},
-        --section_separators = { left = '', right = ''},
-        component_separators = '',
-        section_separators = '',
-        disabled_filetypes = {
-            statusline = {},
-            winbar = {},
-        },
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
+        --disabled_filetypes = {
+            --statusline = {},
+            --winbar = {},
+        --},
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
             statusline = 1000,
             tabline = 1000,
@@ -21,12 +19,16 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = {'mode'},
-        lualine_b = {'filename'},
-        lualine_c = {'diff', 'branch'},
-        -- lualine_x = {'filetype'},
-        lualine_x = {'diagnostics', 'location'},
-        lualine_y = {'filetype'},
-        lualine_z = {'progress'}
+        lualine_b = {'windows'},
+        lualine_c = {'filetype'},
+        lualine_x = {{ 'diagnostics', symbols = {
+          error = '',
+          warn = '',
+          info = '󰋼',
+          hint = '',
+        }}, 'location', 'progress'},
+        lualine_y = {'diff', 'branch'},
+        lualine_z = {'os.date("%a, %b %d %I:%M%p")'},
     },
     inactive_sections = {
         lualine_a = {},
@@ -36,7 +38,14 @@ require('lualine').setup {
         lualine_y = {},
         lualine_z = {}
     },
-    tabline = {},
+    tabline = {
+        lualine_a = {'tabs'},
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {'buffers'}
+    },
     winbar = {
     },
     inactive_winbar = {

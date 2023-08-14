@@ -88,14 +88,18 @@ require('lspconfig')['vimls'].setup{on_attach = on_attach}
 
 require('lspconfig')['yamlls'].setup{on_attach = on_attach}
 
+require('lspconfig')['bufls'].setup{on_attach = on_attach}
+
+require('lspconfig')['clangd'].setup{on_attach = on_attach}
+
 require('lspconfig')['cmake'].setup{
   on_attach = on_attach,
   cmd = { 'C:/Users/Michael/AppData/Local/nvim-data/mason/bin/cmake-language-server.cmd' },
 }
 
-vim.fn.sign_define('DiagnosticSignError', { text = ' ', texthl = 'DiagnosticSignError' })
-vim.fn.sign_define('DiagnosticSignWarn', { text = ' ', texthl = 'DiagnosticSignWarn' })
-vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
-vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
+vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '󰋼', texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
 --  2  6  1
 

@@ -48,15 +48,15 @@
         "defaults": 
         {
             "colorScheme": "Catppuccin Macchiato",
-            "cursorShape": "vintage",
+            "cursorShape": "filledBox",
             "experimental.retroTerminalEffect": false,
             "font": 
             {
-                "face": "CaskaydiaCove Nerd Font Mono",
+                "face": "FiraCode Nerd Font Mono Retina",
                 "size": 11.0,
                 "weight": "normal"
             },
-            "opacity": 95,
+            "opacity": 88,
             "padding": "0"
         },
         "list": 
@@ -104,12 +104,6 @@
                 "hidden": false,
                 "name": "Ubuntu",
                 "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
-            },
-            {
-                "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-                "hidden": true,
-                "name": "Ubuntu",
-                "source": "Windows.Terminal.Wsl"
             }
         ]
     },
