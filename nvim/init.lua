@@ -28,5 +28,6 @@ else
     require('os.windows')
 end
 
-vim.cmd('colorscheme catppuccin-macchiato')
-set_transparent()
+-- vim.cmd('colorscheme catppuccin-macchiato')
+vim.cmd('colorscheme everforest')
+-- set_transparent()

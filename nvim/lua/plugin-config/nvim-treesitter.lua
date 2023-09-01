@@ -17,4 +17,8 @@ require('nvim-treesitter.configs').setup({
     },
   },
 })
+-- vim.treesitter.language.add('python')
+-- vim.treesitter.language.add('typescript')
+-- vim.treesitter.language.add('javascript')
+
 

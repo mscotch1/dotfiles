@@ -2,8 +2,10 @@ require('lualine').setup {
     options = {
         icons_enabled = true,
         theme = 'auto',
-        component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
+        -- component_separators = { left = '', right = ''},
+        -- section_separators = { left = '', right = ''},
         --disabled_filetypes = {
             --statusline = {},
             --winbar = {},
@@ -26,9 +28,9 @@ require('lualine').setup {
           warn = '',
           info = '󰋼',
           hint = '',
-        }}, 'location', 'progress'},
+        }}},
         lualine_y = {'diff', 'branch'},
-        lualine_z = {'os.date("%a, %b %d %I:%M%p")'},
+        lualine_z = {'location', 'progress'},
     },
     inactive_sections = {
         lualine_a = {},
@@ -44,7 +46,7 @@ require('lualine').setup {
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {'buffers'}
+        lualine_z = {'os.date("%a, %b %d %I:%M%p")'}
     },
     winbar = {
     },

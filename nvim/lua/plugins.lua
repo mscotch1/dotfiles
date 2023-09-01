@@ -3,6 +3,9 @@ return {
       'catppuccin/nvim', name='catppuccin'
     },
     {
+      'eandrju/cellular-automaton.nvim',
+    },
+    {
         'sainnhe/everforest',
         init = function()
             require('plugin-config.everforest')
@@ -113,6 +116,11 @@ return {
         'nvim-telescope/telescope.nvim',
         init = function()
             require('plugin-config.telescope')
+        end
+    },
+    {
+        'nvim-telescope/telescope-live-grep-args.nvim',
+        init = function()
         end
     },
     {

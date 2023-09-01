@@ -4,6 +4,10 @@
     "actions": 
     [
         {
+            "command": "unbound",
+            "keys": "ctrl+v"
+        },
+        {
             "command": 
             {
                 "action": "splitPane",
@@ -11,10 +15,6 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
-        },
-        {
-            "command": "unbound",
-            "keys": "ctrl+v"
         },
         {
             "command": 
@@ -35,7 +35,7 @@
     "alwaysShowTabs": false,
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "defaultProfile": "{aab79973-318f-43b6-a9bc-b4096493753f}",
     "disableAnimations": true,
     "newTabMenu": 
     [
@@ -47,16 +47,16 @@
     {
         "defaults": 
         {
-            "colorScheme": "Catppuccin Macchiato",
+            "colorScheme": "everforest",
             "cursorShape": "filledBox",
             "experimental.retroTerminalEffect": false,
             "font": 
             {
-                "face": "FiraCode Nerd Font Mono Retina",
+                "face": "CaskaydiaCove Nerd Font Mono",
                 "size": 11.0,
-                "weight": "normal"
+                "weight": "thin"
             },
-            "opacity": 88,
+            "opacity": 100,
             "padding": "0"
         },
         "list": 
@@ -104,6 +104,18 @@
                 "hidden": false,
                 "name": "Ubuntu",
                 "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
+            },
+            {
+                "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
+                "hidden": false,
+                "name": "Debian",
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "guid": "{aab79973-318f-43b6-a9bc-b4096493753f}",
+                "hidden": false,
+                "name": "Nushell",
+                "source": "nu"
             }
         ]
     },
@@ -409,7 +421,7 @@
             "yellow": "#808000"
         },
         {
-            "background": "#1E1C24",
+            "background": "#293136",
             "black": "#374247",
             "blue": "#7FBBB3",
             "brightBlack": "#6B7F87",
