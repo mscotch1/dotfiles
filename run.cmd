@@ -7,5 +7,5 @@ mklink /D %LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalS
 
 set HOME=%HOMEDRIVE%%HOMEPATH%
 
-rmdir /S /Q %HOME%\.config\wezterm
-mklink /D %HOME%\.config\wezterm %CD%\wezterm
+rmdir /S /Q %HOME%\.config\alacritty
+mklink /D %HOME%\.config\alacritty %CD%\alacritty

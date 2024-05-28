@@ -1,8 +1,9 @@
 import:
   - .\themes\themes\tokyo-night-storm.yaml
-#font:
-  #normal:
-    #family: FiraCode Nerd Font Mono
-    #style: Regular
+font:
+  normal:
+    family: Hack Nerd Font
+    style: Regular
 window:
-  opacity: 0.92
+  opacity: 1.00
+

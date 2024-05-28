@@ -55,25 +55,28 @@ local lsp_flags = {
 
 require('lspconfig')['pyright'].setup {on_attach = on_attach}
 
+require('lspconfig')['ruff_lsp'].setup{on_attach = on_attach}
+
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
-require('lspconfig')['rust_analyzer'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    -- Server-specific settings...
-    settings = {
-      ["rust-analyzer"] = {}
-    }
-}
+--require('lspconfig')['rust_analyzer'].setup{
+    --on_attach = on_attach,
+    --flags = lsp_flags,
+    ---- Server-specific settings...
+    --settings = {
+      --["rust-analyzer"] = {}
+    --}
+--}
 -- https://github.com/iamcco/vim-language-server
 require('lspconfig')['vimls'].setup {on_attach = on_attach}
 
 -- https://github.com/vscode-langservers/vscode-json-languageserver
 require('lspconfig')['jsonls'].setup {
     on_attach = on_attach,
-    cmd = {"json-languageserver", "--stdio"}
+    flags = lsp_flags,
+    -- cmd = {"vscode-json-languageserver.cmd", "--stdio"}
 }
 
 -- https://github.com/vscode-langservers/vscode-css-languageserver-bin
@@ -90,11 +93,16 @@ require('lspconfig')['yamlls'].setup{on_attach = on_attach}
 
 require('lspconfig')['bufls'].setup{on_attach = on_attach}
 
-require('lspconfig')['clangd'].setup{on_attach = on_attach}
+--require('lspconfig')['clangd'].setup{on_attach = on_attach}
+
+--require('lspconfig')['xml-formatter'].setup{on_attach = on_attach}
+
+require('lspconfig')['intelephense'].setup{on_attach = on_attach}
 
 require('lspconfig')['cmake'].setup{
   on_attach = on_attach,
-  cmd = { 'C:/Users/Michael/AppData/Local/nvim-data/mason/bin/cmake-language-server.cmd' },
+  --cmd = { 'cmake-language-server' },
+  --cmd = { 'C:/Users/Michael/AppData/Local/nvim-data/mason/bin/cmake-language-server.cmd' },
 }
 
 vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
@@ -103,3 +111,21 @@ vim.fn.sign_define('DiagnosticSignInfo', { text = '󰋼', texthl = 'DiagnosticSi
 vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
 --  2  6  1
 
+local _border = "single"
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = _border
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.signature_help, {
+    border = _border
+  }
+)
+
+vim.diagnostic.config{
+  float={border=_border}
+}
+-- vim.api.nvim_exec('highlight FloatBorder ctermfg=NONE ctermbg=NONE cterm=NONE', {})

@@ -17,8 +17,8 @@ require('lazy').setup('plugins', {
   }
 })
 
-require('keymappings')
 require('functions')
+require('keymappings')
 require('autocmds')
 
 if vim.loop.os_uname().sysname == 'Linux'
@@ -28,6 +28,8 @@ else
     require('os.windows')
 end
 
--- vim.cmd('colorscheme catppuccin-macchiato')
-vim.cmd('colorscheme everforest')
--- set_transparent()
+--vim.cmd('colorscheme tokyonight')
+vim.cmd('colorscheme catppuccin-macchiato')
+--vim.cmd('colorscheme catppuccin-latte')
+--vim.cmd('colorscheme everforest')
+set_transparent()

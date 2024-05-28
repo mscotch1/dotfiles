@@ -1,0 +1,15 @@
+{
+	"persistedWindowLayouts" : 
+	[
+		{
+			"initialPosition" : "1920,0",
+			"initialSize" : 
+			{
+				"height" : 1081.0,
+				"width" : 1920.0
+			},
+			"launchMode" : "fullscreen",
+			"tabLayout" : []
+		}
+	]
+}

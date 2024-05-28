@@ -18,7 +18,6 @@ vim.o.signcolumn = 'auto:1'
 vim.o.smartindent = true
 vim.o.softtabstop = 4
 vim.o.swapfile = false
-vim.o.syntax = true
 vim.o.tabstop = 4
 vim.o.termguicolors = true
 vim.o.wrap = false

@@ -12,6 +12,12 @@ return {
         end
     },
     {
+        'nvim-colortils/colortils.nvim',
+        init = function()
+            require('plugin-config.colortils')
+        end
+    },
+    {
         'lewis6991/gitsigns.nvim',
         init = function()
             require('plugin-config.gitsigns')
@@ -21,7 +27,10 @@ return {
         'nvim-lualine/lualine.nvim',
         init = function()
             require('plugin-config.lualine')
-        end
+        end,
+        dependencies = {
+            'kyazdani42/nvim-web-devicons',
+        },
     },
     {
         'williamboman/mason.nvim',
@@ -43,6 +52,9 @@ return {
     },
     {
         'mfussenegger/nvim-dap',
+        init = function()
+            require('plugin-config.nvim-dap')
+        end
     },
     {
         'rcarriga/nvim-dap-ui',
@@ -50,31 +62,31 @@ return {
             'mfussenegger/nvim-dap',
         },
         config = function()
-            local dap = require("dap")
-            local dapui = require("dapui")
-            dapui.setup()
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-                dapui.close()
-            end
+            --local dap = require("dap")
+            --local dapui = require("dapui")
+            --dapui.setup()
+            --dap.listeners.after.event_initialized["dapui_config"] = function()
+                --dapui.open()
+            --end
+            --dap.listeners.before.event_terminated["dapui_config"] = function()
+                --dapui.close()
+            --end
+            --dap.listeners.before.event_exited["dapui_config"] = function()
+                --dapui.close()
+            --end
         end
     },
-    {
-        'mfussenegger/nvim-dap-python',
-        ft = 'python',
-        dependencies = {
-            'mfussenegger/nvim-dap',
-            'rcarriga/nvim-dap-ui',
-        },
-        --config = function(_, opts)
-            --local path = '~/.local/'
-        --end
-    },
+    --{
+        --'mfussenegger/nvim-dap-python',
+        --ft = 'python',
+        --dependencies = {
+            --'mfussenegger/nvim-dap',
+            --'rcarriga/nvim-dap-ui',
+        --},
+        ----config = function(_, opts)
+            ----local path = '~/.local/'
+        ----end
+    --},
     {
         'neovim/nvim-lspconfig',
         init = function()
@@ -93,12 +105,17 @@ return {
         end
     },
     {
-        'jose-elias-alvarez/null-ls.nvim',
+        'kyazdani42/nvim-web-devicons',
+        init = function()
+        end
+    },
+    {
+        'nvimtools/none-ls.nvim',
         init = function()
         end,
         ft = {'python', 'js', 'ts'},
         opts = function()
-          return require('plugin-config.null-ls')
+          return require('plugin-config.none-ls')
         end,
     },
     {
@@ -128,6 +145,13 @@ return {
         init = function()
             require('plugin-config.tokyonight')
         end
+    },
+    {
+      'rose-pine/neovim',
+      name = 'rose-pine',
+      init = function()
+          require('plugin-config.tokyonight')
+      end
     },
     {
         'ryanoasis/vim-devicons',
