@@ -45,9 +45,49 @@ return {
         end
     },
     {
-        'hrsh7th/nvim-compe',
+        'hrsh7th/nvim-cmp',
+        dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
         init = function()
-            require('plugin-config.nvim-compe')
+          local cmp = require 'cmp'
+          local luasnip = require 'luasnip'
+          cmp.setup {
+            snippet = {
+              expand = function(args)
+                luasnip.lsp_expand(args.body)
+              end,
+            },
+            mapping = cmp.mapping.preset.insert {
+              ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+              ['<C-f>'] = cmp.mapping.scroll_docs(4),
+              ['<C-Space>'] = cmp.mapping.complete {},
+              ['<CR>'] = cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = true,
+              },
+              ['<Tab>'] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                  cmp.select_next_item()
+                elseif luasnip.expand_or_jumpable() then
+                  luasnip.expand_or_jump()
+                else
+                  fallback()
+                end
+              end, { 'i', 's' }),
+              ['<S-Tab>'] = cmp.mapping(function(fallback)
+                if cmp.visible() then
+                  cmp.select_prev_item()
+                elseif luasnip.jumpable(-1) then
+                  luasnip.jump(-1)
+                else
+                  fallback()
+                end
+              end, { 'i', 's' }),
+            },
+            sources = {
+              { name = 'nvim_lsp' },
+              { name = 'luasnip' },
+            },
+          }
         end
     },
     {
@@ -60,20 +100,36 @@ return {
         'rcarriga/nvim-dap-ui',
         dependencies = {
             'mfussenegger/nvim-dap',
+            'nvim-neotest/nvim-nio',
         },
         config = function()
-            --local dap = require("dap")
-            --local dapui = require("dapui")
-            --dapui.setup()
-            --dap.listeners.after.event_initialized["dapui_config"] = function()
-                --dapui.open()
-            --end
-            --dap.listeners.before.event_terminated["dapui_config"] = function()
-                --dapui.close()
-            --end
-            --dap.listeners.before.event_exited["dapui_config"] = function()
-                --dapui.close()
-            --end
+            local dap = require("dap")
+            local dapui = require("dapui")
+            dapui.setup({
+                controls = {
+                    enabled = true,
+                    element = "repl",
+                    icons = {
+                        pause = "",
+                        play = "",
+                        step_into = "",
+                        step_over = "",
+                        step_out = "",
+                        step_back = "",
+                        run_last = "↻",
+                        terminate = "□",
+                    },
+                }
+            })
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
         end
     },
     --{
