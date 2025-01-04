@@ -52,12 +52,11 @@ local lsp_flags = {
         --},
     --},
 --}
-
 require('lspconfig')['pyright'].setup {on_attach = on_attach}
 
-require('lspconfig')['ruff_lsp'].setup{on_attach = on_attach}
+-- require('lspconfig')['ruff_lsp'].setup{on_attach = on_attach}
 
-require('lspconfig')['tsserver'].setup{
+require('lspconfig')['ts_ls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
@@ -85,18 +84,21 @@ require('lspconfig')['cssls'].setup { on_attach = on_attach }
 -- https://github.com/vscode-langservers/vscode-html-languageserver-bin
 require('lspconfig')['html'].setup {on_attach = on_attach}
 
-require('lspconfig')['eslint'].setup{on_attach = on_attach}
+-- require('lspconfig')['eslint'].setup{on_attach = on_attach}
 
 require('lspconfig')['vimls'].setup{on_attach = on_attach}
 
 require('lspconfig')['yamlls'].setup{on_attach = on_attach}
 
-require('lspconfig')['bufls'].setup{on_attach = on_attach}
+require('lspconfig')['buf_ls'].setup{on_attach = on_attach}
 
-require('lspconfig')['clangd'].setup{
-    on_attach = on_attach,
-     cmd = {"clangd"}
-}
+if vim.loop.os_uname().sysname == 'Linux'
+then
+  require('lspconfig')['clangd'].setup{
+      on_attach = on_attach,
+       cmd = {"clangd"}
+  }
+end
 
 --require('lspconfig')['xml-formatter'].setup{on_attach = on_attach}
 
@@ -172,3 +174,29 @@ vim.diagnostic.config{
     --{ name = 'luasnip' },
   --},
 --}
+
+
+--local hover_timer = nil
+
+---- Function to show hover text
+--local function show_hover_if_available()
+    --if vim.lsp.buf.server_ready() then
+        --vim.lsp.buf.hover()
+    --end
+--end
+
+---- Set up Blink with a callback for hover text
+--require("blink.cmp").setup({
+    --on_select = function(item)
+        ---- Cancel previous hover timer if it exists
+        --if hover_timer then
+            --hover_timer:stop()
+            --hover_timer = nil
+        --end
+
+        ---- Start a new hover timer
+        --hover_timer = vim.defer_fn(function()
+            --show_hover_if_available()
+        --end, 500) -- Delay in milliseconds (adjust as needed)
+    --end,
+--})

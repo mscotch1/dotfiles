@@ -4,7 +4,7 @@ vim.keymap.set('n', '-s', ':Sexplore<Enter>', { silent = true })
 vim.keymap.set('n', '-t', ':Texplore<Enter>', { silent = true })
 
 -- git stuff
-vim.keymap.set('n', '<leader>g', ':tabe<Enter>:set nonumber<Enter>:set norelativenumber<Enter>:terminal lazygit<Enter>a', { silent = true })
+vim.keymap.set('n', '<leader>g', ':tab G<Enter>', { silent = true })
 vim.keymap.set('n', '<leader>l', ':let @l=line(".")<Enter>:vertical G log --patch -L<C-R>l,+1:%<Enter>')
 vim.keymap.set('v', '<leader>l', ':<C-w>let @l=line("\'<")<Enter>:let @m=line("\'>")<Enter>:vertical G log --patch -L<C-R>l,<C-R>m:%<Enter>')
 
