@@ -2,8 +2,10 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
+    --component_separators = '',
+    --section_separators = { left = '', right = '' },
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -21,10 +23,21 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'diff', 'diagnostics'},
-    lualine_c = {'filename'},
+    lualine_c = {{
+      'windows',
+      show_filename_only = true,
+      filetype_names = {
+        lazy = 'Lazy',
+      },
+      symbols = {
+        modified = '~',      -- Text to show when the buffer is modified
+        alternate_file = '#', -- Text to show to identify the alternate file
+        directory =  '',     -- Text to show when the buffer is a directory
+      },
+    }},
     lualine_x = {'encoding', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
+    lualine_y = {'progress', 'location'},
+    lualine_z = {'os.date("%I:%M%p")'}
   },
   inactive_sections = {
     lualine_a = {},
@@ -39,19 +52,8 @@ require('lualine').setup {
       lualine_b = {'branch'},
       lualine_c = {},
       lualine_x = {},
-      lualine_y = {{
-        'windows',
-        show_filename_only = true,
-        filetype_names = {
-          lazy = 'Lazy',
-        },
-        symbols = {
-          modified = '~',      -- Text to show when the buffer is modified
-          alternate_file = '#', -- Text to show to identify the alternate file
-          directory =  '',     -- Text to show when the buffer is a directory
-        },
-      }},
-      lualine_z = {'os.date("%a, %b %d %I:%M%p")'},
+      lualine_y = {},
+      lualine_z = {},
   },
   winbar = {},
   inactive_winbar = {},

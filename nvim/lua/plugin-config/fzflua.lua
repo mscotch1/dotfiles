@@ -1,4 +1,5 @@
 local fzf_lua = require('fzf-lua')
+
 vim.keymap.set('n', '<C-P>', fzf_lua.files, { silent = true })
 vim.keymap.set('n', '<leader>gf', fzf_lua.git_files, { silent = true })
 vim.keymap.set('n', '<leader>b', fzf_lua.buffers, { silent = true })
