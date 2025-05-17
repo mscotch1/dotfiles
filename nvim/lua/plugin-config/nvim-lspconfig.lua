@@ -1,7 +1,7 @@
 require('mason').setup()
 local servers = {
     'pyright', 'ts_ls', 'rust_analyzer', 'vimls',
-    'jsonls', 'cssls', 'html', 'eslint', 'yamlls', 'buf_ls', 'intelephense', 'cmake'
+    'jsonls', 'cssls', 'html', 'eslint', 'yamlls', 'buf_ls', 'intelephense', 'cmake', 'clangd'
 }
 
 require('mason-lspconfig').setup({
@@ -10,26 +10,6 @@ require('mason-lspconfig').setup({
 })
 
 local mason_registry = require('mason-registry')
-
--- List of additional Mason packages to install
-local extra_packages = {
-    'typescript-language-server',
-    'css-lsp',
-    'html-lsp',
-    'yaml-language-server',
-    'vim-language-server',
-    'buf',
-    'intelephense',
-    'cmake-language-server',
-}
-
--- Ensure all packages are installed
-for _, package_name in ipairs(extra_packages) do
-    local package = mason_registry.get_package(package_name)
-    if package and not package:is_installed() then
-        package:install()
-    end
-end
 
 -- LSP on_attach function for keybindings
 local on_attach = function(client, bufnr)

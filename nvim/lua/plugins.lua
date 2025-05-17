@@ -1,5 +1,5 @@
 return {
-    { 'rebelot/kanagawa.nvim', name = 'kanagawa-theme' },
+    { "EdenEast/nightfox.nvim" },
     {
         'sainnhe/everforest',
         init = function()
@@ -20,6 +20,17 @@ return {
         dependencies = {
             'kyazdani42/nvim-web-devicons',
         },
+    },
+    {
+      "utilyre/barbecue.nvim",
+      name = "barbecue",
+      version = "*",
+      dependencies = {
+        "SmiteshP/nvim-navic",
+        "nvim-tree/nvim-web-devicons", -- optional dependency
+      },
+      opts = {
+      },
     },
     { 'williamboman/mason.nvim' },
     { 'williamboman/mason-lspconfig.nvim' },

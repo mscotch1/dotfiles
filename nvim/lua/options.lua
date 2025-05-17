@@ -6,6 +6,8 @@ vim.o.guicursor = 'a:blinkon100'
 vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.incsearch = true
+vim.o.listchars = 'tab:»·,trail:·,extends:>,precedes:<,nbsp:␣,eol:↲'
+vim.o.magic = true
 vim.o.mouse = 'a'
 vim.o.number = true
 vim.o.relativenumber = true
@@ -23,6 +25,5 @@ vim.o.termguicolors = true
 vim.o.wrap = false
 
 vim.g.mapleader = ' '
-vim.g.netrw_banner = 0
+vim.g.netrw_banner = 1
 vim.g.netrw_bufsettings = 'number relativenumber'
-

@@ -1,4 +1,6 @@
+local shell = (vim.loop.os_uname().sysname == "Windows_NT") and "cmd.exe" or "/bin/bash"
 require('fzf-lua').setup({
+  shell = shell,
   defaults = {
     --git_icons = false,
     --file_icons = false,
@@ -33,7 +35,7 @@ require('fzf-lua').setup({
         fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" }
       },
       preview = {
-        -- default        = 'bat',           -- override the default previewer?
+        default        = 'bat',           -- override the default previewer?
                                           -- default uses the 'builtin' previewer
         border         = 'border',        -- border|noborder, applies only to
                                           -- native fzf previewers (bat/cat/git/etc)

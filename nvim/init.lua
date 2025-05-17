@@ -17,9 +17,10 @@ require('lazy').setup('plugins', {
   }
 })
 
+require('autocmds')
 require('functions')
 require('keymappings')
-require('autocmds')
+require('registers')
 
 if vim.loop.os_uname().sysname == 'Linux'
 then
@@ -28,5 +29,5 @@ else
     require('os.windows')
 end
 
-vim.cmd('colorscheme kanagawa-dragon')
---set_transparent()
+vim.cmd('colorscheme carbonfox')
+-- set_transparent()

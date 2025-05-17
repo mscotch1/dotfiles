@@ -1,7 +1,23 @@
 local fzf_lua = require('fzf-lua')
 
-vim.keymap.set('n', '<C-P>', fzf_lua.files, { silent = true })
-vim.keymap.set('n', '<leader>gf', fzf_lua.git_files, { silent = true })
-vim.keymap.set('n', '<leader>b', fzf_lua.buffers, { silent = true })
-vim.keymap.set('n', '<leader>gs', fzf_lua.git_status, { silent = true })
-vim.keymap.set('n', '<leader>rg', fzf_lua.live_grep, { silent = true })
+vim.keymap.set('n', '<C-P>', function()
+  fzf_lua.files({
+    -- can't do fancy prompt for files :(
+  })
+end, { silent = true })
+vim.keymap.set('n', '<leader>gf', function()
+  fzf_lua.git_files({
+    prompt = ' ',
+  })
+end, { silent = true })
+vim.keymap.set('n', '<leader>b', function()
+  fzf_lua.buffers({
+    prompt = ' ',
+  })
+end, { silent = true })
+vim.keymap.set('n', '<leader>rg', function()
+  fzf_lua.live_grep({
+    prompt = ' ',
+    rg_opts = "--pcre2 --hidden --column --line-number --no-heading --color=always --smart-case -e",
+  })
+end, { silent = true })
