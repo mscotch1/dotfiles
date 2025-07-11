@@ -3,6 +3,7 @@ vim.keymap.set('n', '-v', ':Vexplore<Enter>', { silent = true })
 vim.keymap.set('n', '-s', ':Sexplore<Enter>', { silent = true })
 vim.keymap.set('n', '-t', ':Texplore<Enter>', { silent = true })
 vim.keymap.set('n', '<leader>o', ':Texplore .<Enter>', { silent = true })
+vim.keymap.set('n', '<leader>.', '@:', { silent = true })
 
 -- git stuff
 vim.keymap.set('n', '<leader>g', ':tab G<Enter>', { silent = true })

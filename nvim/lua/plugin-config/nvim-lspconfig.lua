@@ -1,8 +1,16 @@
 require('mason').setup()
+
+local is_linux = vim.loop.os_uname().sysname == 'Linux'
+-- local is_windows = vim.loop.os_uname().sysname:match("Windows")
+
 local servers = {
-    'pyright', 'ts_ls', 'rust_analyzer', 'vimls',
+    'ts_ls', 'rust_analyzer', 'vimls', 'pylsp',
     'jsonls', 'cssls', 'html', 'eslint', 'yamlls', 'buf_ls', 'intelephense', 'cmake', 'clangd'
 }
+
+if is_linux then
+    table.insert(servers, 'clangd') -- Only enable clangd on Linux
+end
 
 require('mason-lspconfig').setup({
   ensure_installed = servers,

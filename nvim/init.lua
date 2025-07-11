@@ -29,5 +29,6 @@ else
     require('os.windows')
 end
 
-vim.cmd('colorscheme carbonfox')
--- set_transparent()
+vim.cmd('set background=dark')
+vim.cmd('colorscheme default')
+--set_transparent()

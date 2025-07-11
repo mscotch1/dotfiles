@@ -35,7 +35,7 @@ require('fzf-lua').setup({
         fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" }
       },
       preview = {
-        default        = 'bat',           -- override the default previewer?
+        --default        = 'bat',           -- override the default previewer?
                                           -- default uses the 'builtin' previewer
         border         = 'border',        -- border|noborder, applies only to
                                           -- native fzf previewers (bat/cat/git/etc)
