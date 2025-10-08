@@ -1,62 +1,71 @@
 return {
+  -- Colorscheme (kept eager so UI doesn’t flash)
   {
-    'lewis6991/gitsigns.nvim',
-    init = function()
-      require('plugin-config.gitsigns')
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    init = function ()
+      vim.cmd.colorscheme('catppuccin-mocha')
     end
   },
-  { 'williamboman/mason.nvim' },
-  { 'williamboman/mason-lspconfig.nvim' },
+
+  -- Git signs in gutter
+  {
+    'lewis6991/gitsigns.nvim',
+    event = { "BufReadPre", "BufNewFile" }, -- only when opening a file
+    config = function()
+      require('plugin-config.gitsigns')
+    end,
+  },
+
+  -- Mason: lazy load on command
+  { 'williamboman/mason.nvim', cmd = "Mason" },
+  { 'williamboman/mason-lspconfig.nvim', lazy = true },
+
+  -- Statusline breadcrumbs
   {
     "utilyre/barbecue.nvim",
-    name = "barbecue",
-    version = "*",
+    event = "VeryLazy", -- defer until after startup
     dependencies = {
       "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
+      "nvim-tree/nvim-web-devicons",
     },
     opts = {
+      show_dirname = false,
+      show_basename = false,
     },
   },
+
+  -- Comment toggling
   {
     'preservim/nerdcommenter',
-    init = function()
+    keys = { { "gc", mode = { "n", "v" } } }, -- load on use
+    config = function()
       require('plugin-config.nerdcommenter')
     end
   },
+
+  -- Completion
   {
     'saghen/blink.cmp',
-    -- optional: provides snippets for the snippet source
+    event = "InsertEnter", -- load only when entering insert mode
     dependencies = 'rafamadriz/friendly-snippets',
-
-    -- use a release tag to download pre-built binaries
     version = '*',
-    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-    -- build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
-
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
     opts = {
       keymap = { preset = 'default' },
-      -- keymap = { preset = 'super-tab' },
-
       appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono'
       },
-
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
-
-      fuzzy = {
-        implementation = 'lua',
-      },
+      fuzzy = { implementation = 'lua' },
     },
     opts_extend = { "sources.default" }
   },
+
+  -- LSP config
   {
     'neovim/nvim-lspconfig',
     dependencies = { 'saghen/blink.cmp' },
@@ -80,45 +89,45 @@ return {
       require('plugin-config.nvim-lspconfig')
     end
   },
+
+  -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    init = function()
+    event = { "BufReadPre", "BufNewFile" },
+    build = ":TSUpdate",
+    config = function()
       require('plugin-config.nvim-treesitter')
     end
   },
-  {
-    'nvim-lua/plenary.nvim',
-    init = function()
-      require('plugin-config.plenary')
-    end
-  },
+
+  -- Lua helper
+  { 'nvim-lua/plenary.nvim', lazy = true },
+
+  -- Fuzzy finder
   {
     'ibhagwan/fzf-lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    init = function()
-      require('plugin-config/fzflua')
-    end,
+    cmd = "FzfLua", -- only when called
+    event = "VeryLazy",
     config = function()
       require('plugin-config/fzflua-config')
     end
   },
-  {
-    'ryanoasis/vim-devicons',
-    init = function()
-      require('plugin-config.vim-devicons')
-    end
-  },
+
+  -- Icons
+  { 'ryanoasis/vim-devicons', lazy = true },
+
+  -- Git integration
   {
     'tpope/vim-fugitive',
-    init = function()
-      require('plugin-config.vim-fugitive')
-    end
+    cmd = { "Git", "Gdiffsplit", "Gstatus" },
   },
+
+  -- Distraction-free editing
   {
     'folke/zen-mode.nvim',
-    init = function()
+    cmd = "ZenMode",
+    config = function()
       require('plugin-config.zen-mode')
     end
   },
 }
-

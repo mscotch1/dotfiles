@@ -6,7 +6,7 @@ vim.keymap.set('n', '<leader>o', ':Texplore .<Enter>', { silent = true })
 vim.keymap.set('n', '<leader>.', '@:', { silent = true })
 
 -- git stuff
-vim.keymap.set('n', '<leader>g', ':tab G<Enter>', { silent = true })
+vim.keymap.set('n', '<leader>g', ':tab Git<Enter>', { silent = true })
 vim.keymap.set('n', '<leader>l', ':let @l=line(".")<Enter>:vertical G log --patch -L<C-R>l,+1:%<Enter>')
 vim.keymap.set('v', '<leader>l', ':<C-w>let @l=line("\'<")<Enter>:let @m=line("\'>")<Enter>:vertical G log --patch -L<C-R>l,<C-R>m:%<Enter>')
 

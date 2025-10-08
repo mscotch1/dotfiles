@@ -29,6 +29,6 @@ else
     require('os.windows')
 end
 
-vim.cmd('set background=dark')
-vim.cmd('colorscheme default')
+--vim.cmd('set background=dark')
+--vim.cmd('colorscheme default')
 --set_transparent()
