@@ -1,11 +1,10 @@
 require('mason').setup()
 
 local is_linux = vim.loop.os_uname().sysname == 'Linux'
--- local is_windows = vim.loop.os_uname().sysname:match("Windows")
 
 local servers = {
-    'ts_ls', 'rust_analyzer', 'vimls', 'pylsp',
-    'jsonls', 'cssls', 'html', 'eslint', 'yamlls', 'buf_ls', 'intelephense', 'cmake', 'clangd'
+  'ts_ls', 'rust_analyzer', 'vimls', 'pylsp',
+  'jsonls', 'cssls', 'html', 'eslint', 'yamlls', 'buf_ls', 'intelephense', 'cmake'
 }
 
 if is_linux then
@@ -16,8 +15,6 @@ require('mason-lspconfig').setup({
   ensure_installed = servers,
   automatic_installation = true
 })
-
-local mason_registry = require('mason-registry')
 
 -- LSP on_attach function for keybindings
 local on_attach = function(client, bufnr)
@@ -38,16 +35,9 @@ local on_attach = function(client, bufnr)
   vim.diagnostic.config({ virtual_text = true, severity_sort = true })
 end
 
-local lspconfig = require('lspconfig')
 local lsp_flags = { debounce_text_changes = 150 }
 
 -- Common LSP servers
 for _, server in ipairs(servers) do
-    lspconfig[server].setup { on_attach = on_attach, flags = lsp_flags }
+    vim.lsp.config(server, { on_attach = on_attach, flags = lsp_flags })
 end
-
--- Linux-specific LSP
-if vim.loop.os_uname().sysname == 'Linux' then
-    lspconfig['clangd'].setup{ on_attach = on_attach, cmd = {"clangd"} }
-end
-

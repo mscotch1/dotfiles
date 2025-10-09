@@ -7,8 +7,8 @@ vim.keymap.set('n', '<leader>.', '@:', { silent = true })
 
 -- git stuff
 vim.keymap.set('n', '<leader>g', ':tab Git<Enter>', { silent = true })
-vim.keymap.set('n', '<leader>l', ':let @l=line(".")<Enter>:vertical G log --patch -L<C-R>l,+1:%<Enter>')
-vim.keymap.set('v', '<leader>l', ':<C-w>let @l=line("\'<")<Enter>:let @m=line("\'>")<Enter>:vertical G log --patch -L<C-R>l,<C-R>m:%<Enter>')
+vim.keymap.set('n', '<leader>l', ':let @l=line(".")<Enter>:vertical Git log --patch -L<C-R>l,+1:%<Enter>')
+vim.keymap.set('v', '<leader>l', ':<C-w>let @l=line("\'<")<Enter>:let @m=line("\'>")<Enter>:vertical Git log --patch -L<C-R>l,<C-R>m:%<Enter>')
 
 vim.keymap.set('n', '<C-s>', ':b #<Enter>', { silent = true })
 
