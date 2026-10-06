@@ -1,11 +1,12 @@
 return {
   -- Colorscheme (kept eager so UI doesn’t flash)
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    'folke/tokyonight.nvim',
+    name = 'tokyonight',
     priority = 1000,
     init = function ()
-      vim.cmd.colorscheme('catppuccin-mocha')
+      vim.cmd('set background=dark')
+      vim.cmd.colorscheme('tokyonight')
     end
   },
 

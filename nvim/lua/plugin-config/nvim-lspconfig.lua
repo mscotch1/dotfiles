@@ -1,14 +1,25 @@
 require('mason').setup()
 
-local is_linux = vim.loop.os_uname().sysname == 'Linux'
-
 local servers = {
-  'ts_ls', 'rust_analyzer', 'vimls', 'pylsp',
-  'jsonls', 'cssls', 'html', 'eslint', 'yamlls', 'buf_ls', 'intelephense', 'cmake'
+  buf_ls = nil,
+  cmake = { 'CMakeLists.txt' },
+  cssls = nil,
+  eslint = { '.eslintrc' },
+  html = nil,
+  intelephense = nil,
+  jsonls = nil,
+  rust_analyzer = { 'Cargo.toml' },
+  ts_ls = { 'tsconfig.json', 'package.json' },
+  vimls = nil,
+  yamlls = nil,
 }
 
+local is_linux = vim.loop.os_uname().sysname == 'Linux'
+
+-- Only enable bash and clang on Linux
 if is_linux then
-    table.insert(servers, 'clangd') -- Only enable clangd on Linux
+  servers['bashls'] = nil
+  servers['clangd'] = { 'CmakeLists.txt' }
 end
 
 require('mason-lspconfig').setup({
@@ -38,6 +49,10 @@ end
 local lsp_flags = { debounce_text_changes = 150 }
 
 -- Common LSP servers
-for _, server in ipairs(servers) do
-    vim.lsp.config(server, { on_attach = on_attach, flags = lsp_flags })
+for server, root_markers in pairs(servers) do
+    vim.lsp.config(server, {
+      on_attach = on_attach,
+      flags = lsp_flags,
+      root_markers = root_markers,
+    })
 end

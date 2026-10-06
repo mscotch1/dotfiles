@@ -1,26 +1,36 @@
-require('nvim-treesitter.configs').setup({
-  highlight = {
-    enable = true
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-        ['ab'] = '@block.outer',
-        ['ib'] = '@block.inner',
-      },
-    },
-  },
+require('nvim-treesitter').setup({
+  install_dir = vim.fn.stdpath('data') .. '/site'
 })
- vim.treesitter.language.add('python')
- vim.treesitter.language.add('typescript')
- vim.treesitter.language.add('javascript')
- vim.treesitter.language.add('cpp')
- vim.treesitter.language.add('proto')
 
+local langs = {
+  bash = { '.sh' },
+  c = { '.c', '.h' },
+  cmake = { '.cmake' },
+  cpp = { '.cpp', '.cxx', '.hpp', '.hxx' },
+  css = { '.css' },
+  html = { '.html' },
+  javascript = { '.js', '.jsx' },
+  json = { '.json' },
+  lua = { '.lua' },
+  luadoc = { '.lua' },
+  markdown = { '.md' },
+  markdown_inline = nil,
+  proto = { '.proto' },
+  python = { '.py' },
+  toml = { '.toml' },
+  typescript = { '.ts', '.tsx' },
+  yaml = { '.yaml', '.yml' },
+}
 
+for lang, pattern in pairs(langs) do
+  vim.treesitter.language.add(lang)
+
+  if pattern ~= nil then
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = pattern,
+      callback = function()
+        vim.treesitter.start()
+      end,
+    })
+  end
+end
