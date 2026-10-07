@@ -27,3 +27,6 @@ vim.o.wrap = false
 vim.g.mapleader = ' '
 vim.g.netrw_banner = 1
 vim.g.netrw_bufsettings = 'number relativenumber'
+
+vim.opt.grepprg = "rg --vimgrep"
+vim.opt.grepformat = "%f:%l:%c:%m"

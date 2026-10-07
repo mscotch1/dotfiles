@@ -11,6 +11,7 @@ local langs = {
   html = { '.html' },
   javascript = { '.js', '.jsx' },
   json = { '.json' },
+  just = { 'justfile' },
   lua = { '.lua' },
   luadoc = { '.lua' },
   markdown = { '.md' },

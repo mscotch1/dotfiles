@@ -28,3 +28,10 @@ then
 else
     require('os.windows')
 end
+
+if vim.g.neovide then
+  require('neovide')
+end
+
+vim.cmd('colorscheme everforest')
+set_transparent()

@@ -11,9 +11,16 @@ vim.keymap.set('n', '<leader>gf', function()
     prompt = ' ',
   })
 end, { silent = true })
-vim.keymap.set('n', '<leader>b', function()
+vim.keymap.set('n', '<C-B>', function()
   fzf_lua.buffers({
     prompt = ' ',
+    file_icons = 'devicons',
+    color_icons = true,
+    sort_lastused = true,
+    show_unloaded = true,
+    ignore_current_buffer = true,
+    cwd_only = false,
+    path_shorten = true,
   })
 end, { silent = true })
 vim.keymap.set('n', '<leader>rg', function()

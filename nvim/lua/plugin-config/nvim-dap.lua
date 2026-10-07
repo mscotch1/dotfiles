@@ -1,65 +1,67 @@
 local dap = require('dap')
 
-dap.adapters.cppdbg = {
-  id = 'cppdbg',
-  type = 'executable',
-  command = 'OpenDebugAD7', -- Adjust this path
-  options = {
-    detached = false
+dap.adapters.debugpy = {
+  type = 'server',
+  port = 9090,
+}
+dap.configurations.python = {
+  {
+    name = 'Attach to running pythond',
+    type = 'debugpy',
+    request = 'attach',
+  },
+}
+
+dap.adapters.codelldb = {
+  {
+    type = 'server',
+    port = '${port}',
+    executable = {
+      command = vim.fn.stdpath('data') .. '/mason/bin/codelldb',
+      args = {'--port', '${port}'},
+    }
+  }
+}
+dap.configurations.rust = {
+  {
+    name = 'Attach to running Tauri backend',
+    type = 'codelldb',
+    request = 'attach',
+    pid = require('dap.utils').pick_process,
   }
 }
 
 vim.fn.sign_define(
-    "DapBreakpoint",
-    { text = "●", texthl = "", linehl = "debugBreakpoint", numhl = "debugBreakpoint" }
+    'DapBreakpoint',
+    { text = '●', texthl = '', linehl = 'debugBreakpoint', numhl = 'debugBreakpoint' }
 )
 
 vim.fn.sign_define(
-    "DapBreakpointCondition",
-    { text = "◆", texthl = "", linehl = "debugBreakpoint", numhl = "debugBreakpoint" }
+    'DapBreakpointCondition',
+    { text = '◆', texthl = '', linehl = 'debugBreakpoint', numhl = 'debugBreakpoint' }
 )
 
-dap.configurations.cpp = {
-  {
-    name = "Launch",
-    type = "cppdbg",
-    request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-    setupCommands = {
-      {
-        text = '-enable-pretty-printing',
-        description = 'enable pretty printing',
-        ignoreFailures = false
-      },
-    },
-    args = {},
-    environment = {},
-    externalConsole = true,
-    MIMode = 'gdb',
-    miDebuggerPath = 'gdb', -- Adjust this path
-    setupCommands = {
-      {
-        text = '-enable-pretty-printing',
-        description = 'Enable pretty printing',
-        ignoreFailures = false
-      },
-    },
-    logging = {
-      moduleLoad = false,
-      programOutput = true,
-      trace = true,
-      engineLogging = true,
-    },
-  },
-}
-
 -- Key mappings for DAP
-vim.api.nvim_set_keymap('n', '<F5>', ":lua require'dap'.continue()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F10>', ":lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F11>', ":lua require'dap'.step_into()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F12>', ":lua require'dap'.step_out()<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>B', ":DapToggleBreakpoint<CR>", { noremap = true, silent = true })
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+  require('dap.ui.widgets').hover()
+end)
+vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+  require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<Leader>df', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.scopes)
+end)
